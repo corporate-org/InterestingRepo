@@ -20,11 +20,14 @@ jobs:
     runs-on: [ubuntu-latest]
     env:
       WALHALL_SERVER: example.com
+      GIT_COMMIT: ${{ github.sha }}
+      GIT_REF: ${{ github.ref }}
+      GIT_REPO: ${{ github.repository }}
     
     steps:
     - name: Push to the registry
       run: echo "Pushing to the registry!"
     - name: Notify Walhall
-      run: echo curl -v -X "{\"commit\":\"${{ github.sha }}\", \"branch\":\"${${{ github.ref }}##*/}\"}" https://${WALHALL_SERVER}/orgs/org1/modules/${${{ github.repository }}##*/}
+      run: echo curl -v -X "{\"commit\":\"${{ github.sha }}\", \"branch\":\"${GIT_REF##*/}\"}" https://${WALHALL_SERVER}/orgs/org1/modules/${GIT_REPO##*/}
 
     
