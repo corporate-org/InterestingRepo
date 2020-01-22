@@ -19,15 +19,17 @@ jobs:
   push-to-registry:
     runs-on: [ubuntu-latest]
     env:
-      WALHALL_SERVER: development-haas-millerandersonrobinson.newapp.io
+      WALHALL_SERVER: development-taylortaylor-guzmanward.newapp.io
       GIT_COMMIT: ${{ github.sha }}
       GIT_REF: ${{ github.ref }}
       GIT_REPO: ${{ github.repository }}
     
     steps:
     - name: Push to the registry
-      run: echo curl -X POST -H "Accept:application/json" -H "Content-Type:application/json" -d "{\"commit\":\"${{ github.sha }}\", \"branch\":\"${GIT_REF##*/}\"}" https://${WALHALL_SERVER}/orgs/org1/modules/${GIT_REPO##*/}
+      run: echo Push Push!
     - name: Notify Walhall
-      run: curl -X POST -H "Accept:application/json" -H "Content-Type:application/json" -d "{\"commit\":\"${{ github.sha }}\", \"branch\":\"${GIT_REF##*/}\"}" https://${WALHALL_SERVER}/orgs/org1/modules/${GIT_REPO##*/}
+      run: |
+        echo curl -X POST -H "Accept:application/json" -H "Content-Type:application/json" -d "{\"commit\":\"${{ github.sha }}\", \"branch\":\"${GIT_REF##*/}\"}" https://${WALHALL_SERVER}/orgs/org1/modules/${GIT_REPO##*/}/versions
+        curl -X POST -H "Accept:application/json" -H "Content-Type:application/json" -d "{\"commit\":\"${{ github.sha }}\", \"branch\":\"${GIT_REF##*/}\"}" https://${WALHALL_SERVER}/orgs/org1/modules/${GIT_REPO##*/}/versions
 
     
