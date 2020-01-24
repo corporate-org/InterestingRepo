@@ -19,7 +19,7 @@ jobs:
   push-to-registry:
     runs-on: [ubuntu-latest]
     env:
-      WALHALL_SERVER: development-taylortaylor-guzmanward.newapp.io
+      WALHALL_SERVER: development-lambertharrisonberry-douglas.newapp.io
       GIT_COMMIT: ${{ github.sha }}
       GIT_REF: ${{ github.ref }}
       GIT_REPO: ${{ github.repository }}
